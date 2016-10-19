@@ -12,11 +12,10 @@ $.ajax({
     console.log(data);
   }
 });
-*/
 
 function printData (data) {
   console.log(data);
-};
+}; */
 
 //gets the specified number of random IDs I want
 function getUserData (users) {
@@ -26,28 +25,52 @@ function getUserData (users) {
 };
 
 //function gets the data from ajax
-function getUsers (event) {
+function getUsers () {
   var req = getUserData(12);
-  req.then(printData);
-  console.log("The request is away.");
+  req.then(makeIDBoxes);
 };
 
-$("#submit-button").click(getUsers);
+//$("#submit-button").click(getUsers);
+
+//function creates an empty box in HTML for each user
+function makeIDBoxes (user) {
+  for (var i=0; i < user.results.length; i++) {
+    var employee = user.results[i];
+    var employeeHTML = `
+      <div class="user-box">
+        <img class="image" src="${employee.picture.large}"/>
+        <div class="name">${employee.name.first} ${employee.name.last}</div>
+        <div class="email">${employee.email}</div>
+        <div class="address">${employee.location.street}</div>
+        <div class="address">${employee.location.city} ${employee.location.state} ${employee.location.postcode}</div>
+        <div class="phone">${employee.phone}</div>
+        <div class="ssn">${employee.cell}</div>
+      </div>`;
+
+      $(".container").append(employeeHTML);
+    };
+};
+
+getUsers();
 
 
+/*
 //function pulls necessary parts of user data from ajax array
 function userResults (user) {
-  var photo = user.results.picture.large;
-  var firstName = user.results.name.first;
-  var lastName = user.results.name.last;
-  var email = user.results.email;
-  var street = user.results.location.street;
-  var city = user.results.location.city;
-  var state = user.results.location.state;
-  var zipcode = user.results.location.postcode;
-  var phone = user.results.phone;
-  var ssn = user.results.cell;
+  for (var i=0; i < user.results.length; i++) {
+    var employee = user.results[i];
 
+    var photo = employee.picture.large;
+    var firstName = employee.name.first;
+    var lastName = employee.name.last;
+    var email = employee.email;
+    var street = employee.location.street;
+    var city = employee.location.city;
+    var state = employee.location.state;
+    var zipcode = employee.location.postcode;
+    var phone = employee.phone;
+    var ssn = employee.cell;
+  }
   return {
     photo: photo,
     firstName: firstName,
@@ -61,3 +84,4 @@ function userResults (user) {
     ssn: ssn
   };
 };
+*/
