@@ -24,7 +24,7 @@ function makeIDBoxes (user) {
     var employee = user.results[i];
     //variable generates the data into HTML
     var employeeHTML = `
-      <div class="user-box">
+      <div class="emp-box">
         <img class="image" src="${employee.picture.large}"/>
         <div class="name">${employee.name.first} ${employee.name.last}</div>
         <div class="email">${employee.email}</div>
