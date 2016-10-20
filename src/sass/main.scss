@@ -1,0 +1,73 @@
+* {
+  box-sizing: border-box;
+}
+
+$blue: rgb(0, 173, 120);
+
+.container {
+  padding-left: 8%;
+}
+
+h1 {
+  padding-left: 25%;
+}
+
+.emp-box {
+  width: 282px;
+  height: 520px;
+  float: left;
+  margin: 20px 10px;
+  text-align: center;
+  overflow: auto;
+
+  .image {
+    width: 100%;
+    height: auto;
+  }
+
+  .name {
+    padding-top: 15px;
+    font-weight: bold;
+    font-size: 16px;
+
+    a {
+      text-decoration: none;
+      display: inline-table;
+    }
+
+    a:after {
+      content: "";
+      border-bottom: 0.14em solid $blue;
+      display: table-caption;
+      caption-side: bottom;
+      position: relative;
+      margin-bottom:-1.65em;
+      padding: 2px;
+    }
+  }
+
+  .email {
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  .street {
+    padding-top: 10px;
+    padding-bottom: 4px;
+    text-transform: capitalize;
+  }
+
+  .address {
+    text-transform: capitalize;
+    padding-bottom: 4px;
+  }
+
+  .ssn {
+    padding-top: 40px;
+    color: $blue;
+    filter: blur(3px);
+  }
+  .ssn:hover {
+    filter: none;
+  }
+}
