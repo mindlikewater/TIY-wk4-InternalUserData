@@ -3,20 +3,6 @@ import $ from 'jquery';
 //global constant holds the main url
 var RANDOM_API = "https://randomuser.me/api/";
 
-/*
-//calls the server to get 12 random IDs
-$.ajax({
-  url: `${RANDOM_API}/?results=12`,
-  dataType: 'json',
-  success: function(data) {
-    console.log(data);
-  }
-});
-
-function printData (data) {
-  console.log(data);
-}; */
-
 //gets the specified number of random IDs I want
 function getUserData (users) {
   return $.ajax({
@@ -30,12 +16,13 @@ function getUsers () {
   req.then(makeIDBoxes);
 };
 
-//$("#submit-button").click(getUsers);
-
-//function creates an empty box in HTML for each user
+//function creates an empty box in HTML for each employee
 function makeIDBoxes (user) {
+  //loop to create an HTML box for every employee
   for (var i=0; i < user.results.length; i++) {
+    //variable holds the current employee
     var employee = user.results[i];
+    //variable generates the data into HTML
     var employeeHTML = `
       <div class="user-box">
         <img class="image" src="${employee.picture.large}"/>
@@ -51,37 +38,5 @@ function makeIDBoxes (user) {
     };
 };
 
+//calls function that gets employee data
 getUsers();
-
-
-/*
-//function pulls necessary parts of user data from ajax array
-function userResults (user) {
-  for (var i=0; i < user.results.length; i++) {
-    var employee = user.results[i];
-
-    var photo = employee.picture.large;
-    var firstName = employee.name.first;
-    var lastName = employee.name.last;
-    var email = employee.email;
-    var street = employee.location.street;
-    var city = employee.location.city;
-    var state = employee.location.state;
-    var zipcode = employee.location.postcode;
-    var phone = employee.phone;
-    var ssn = employee.cell;
-  }
-  return {
-    photo: photo,
-    firstName: firstName,
-    lastName: lastName,
-    email: email,
-    street: street,
-    city: city,
-    state: state,
-    zipcode: zipcode,
-    phone: phone,
-    ssn: ssn
-  };
-};
-*/
